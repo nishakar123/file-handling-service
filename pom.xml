@@ -8,6 +8,7 @@
 		<version>4.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.nishakar</groupId>
 	<artifactId>file-handling-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -19,6 +20,10 @@
 		<spring-cloud.version>2025.1.0</spring-cloud.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-restclient</artifactId>
@@ -35,11 +40,37 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.12.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Jackson Java Time -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+		<!-- JSON Streaming -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.7.0.Beta1</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.nishakar.commons</groupId>
@@ -87,7 +118,20 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.7.0.Beta1</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</path>
 					</annotationProcessorPaths>
+					<compilerArgs><!--Ensures default component model is spring-->
+						<arg>-Amapstruct.defaultComponentModel=spring</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>

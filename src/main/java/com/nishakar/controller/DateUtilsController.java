@@ -3,6 +3,7 @@ package com.nishakar.controller;
 import com.nishakar.commons.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Slf4j
+@RequestMapping("/api/file-handling-service")
 @RestController
 public class DateUtilsController {
 
@@ -58,7 +60,7 @@ public class DateUtilsController {
         System.out.println("Timestamp: " + timestamp);
 
         LocalDateTime fromTimestamp = DateUtils.fromEpochMilli(timestamp);
-        System.out.println("From timestamp: " + fromTimestamp);
+        System.out.println("From date: " + fromTimestamp);
 
         // ========== Current date/time ==========
         String currentDate = DateUtils.getCurrentDateAsString("dd-MM-yyyy");

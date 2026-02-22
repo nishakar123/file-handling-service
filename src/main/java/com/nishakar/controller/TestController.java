@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @Slf4j
+@RequestMapping("/api/file-handling-service")
 @RestController
 public class TestController {
 
